@@ -1,0 +1,4 @@
+backups/
+__pycache__/
+source/airmx-local/build/
+source/airmx-local/.test-work/
