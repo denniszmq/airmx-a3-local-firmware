@@ -1,0 +1,4 @@
+#include "goose_decode.h"
+#include <assert.h>
+#include <stdio.h>
+int main(void){unsigned char p[]={8,1,0,0,0,0,0,0,1,4,0xff,0,0x2b,2,2,1,80};int t,h;assert(goose_decode(p,sizeof(p),&t,&h)&&t==2550&&h==5550);for(int n=0;n<14;n++)assert(!goose_decode(p,n,&t,&h));p[10]=0xce;p[11]=0xff;assert(goose_decode(p,sizeof(p),&t,&h)&&t==-500);p[1]=255;assert(!goose_decode(p,sizeof(p),&t,&h));p[1]=1;p[9]=250;assert(!goose_decode(p,sizeof(p),&t,&h));p[9]=4;p[12]=0xff;p[13]=0xff;assert(!goose_decode(p,sizeof(p),&t,&h));unsigned char real[]={0x08,0x01,0xb1,0x06,0x10,0x34,0x2d,0x58,0x01,0x04,0x37,0x01,0x0a,0x02,0x02,0x01,0x58};assert(goose_decode(real,sizeof(real),&t,&h)&&t==3110&&h==5220);puts("PASS: real CGG1 FFF9 sample; Qingping decoder, signed temperature, humidity bounds, short and malformed packets");}
