@@ -1,0 +1,1 @@
+idf_component_register(SRCS "main.c" "water_usage.c" "goose.c" "goose_decode.c" "protocol.c" "ota_guard.c" "network.c" "network_validate.c" INCLUDE_DIRS "." REQUIRES esp_system bt app_update cjson esp_driver_uart esp_http_server esp_wifi esp_netif nvs_flash spiffs esp_timer EMBED_TXTFILES "../web/index.html")
